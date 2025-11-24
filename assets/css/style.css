@@ -180,7 +180,7 @@ body.active .sec1 .text .skew            {opacity: 1; transform: translateY(0%);
 
 
 /* sec2 */
-.s2_bg {position: absolute; left: 50%; top: 8%; transform: translateX(-50%); width: 1000px; height: 800px; background: url(../img/dot_bg.png) no-repeat center center; background-size: cover; z-index: 9000; opacity: 0.35;}
+/* .s2_bg {position: absolute; left: 50%; top: 8%; transform: translateX(-50%); width: 1000px; height: 800px; background: url(../img/dot_bg.png) no-repeat center center; background-size: cover; z-index: 9000; opacity: 0.35;}
 .sec2 {padding: 6% 0 15% 0; text-align: center;}
 .sec2 .strapline {color: #3ee7ac; font-size: 24px; font-weight: 700; letter-spacing: 0.5px;}
 .sec2 h3 {font-size: 80px; font-family: 'Fugaz One', cursive; font-weight: bold; margin-top: -14px;}
@@ -191,11 +191,11 @@ body.active .sec1 .text .skew            {opacity: 1; transform: translateY(0%);
 .sec2 .skill li {position: relative; float: left; width: 20%;}
 .sec2 .skill li a {position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-weight: 500;}
 .sec2 .skill li a strong {font-size: 80px; color: #030303; font-weight: 100; line-height: 1.1; font-weight: 200;}
-.sec2 .skill li a span {font-size: 14px; color: #030303; display: block;}
+.sec2 .skill li a span {font-size: 14px; color: #030303; display: block;} */
 
 
 /********** sec2 animation **********/
-.sec2 .strapline                               {opacity: 0; transform: translateY(40px);transition:all 0.5s ease;}
+/* .sec2 .strapline                               {opacity: 0; transform: translateY(40px);transition:all 0.5s ease;}
 .sec2 h3 span                                  {opacity: 0; transform: translateY(-10px); display: inline-block;}
 .sec2 h3 span:nth-child(1)                     {transition: all 0.3s 0.5s cubic-bezier(.215,.61,.355,1);}
 .sec2 h3 span:nth-child(2)                     {transition: all 0.3s 0.55s cubic-bezier(.215,.61,.355,1);}
@@ -213,9 +213,6 @@ body.active .sec1 .text .skew            {opacity: 1; transform: translateY(0%);
 .sec2 .skill-wrap .skill li:nth-child(3)       {opacity: 0; transform: translateY(-60px); transition: all 0.8s 0.9s ease;}
 .sec2 .skill-wrap .skill li:nth-child(4)       {opacity: 0; transform: translateY(-60px); transition: all 0.8s 1.1s ease;}
 .sec2 .skill-wrap .skill li:nth-child(5)       {opacity: 0; transform: translateY(-60px); transition: all 0.8s 1.3s ease;}
-
-
-
 .sec2 .strapline.show                          {opacity: 1; transform: translateY(0);}
 .sec2 h3.show span                             {opacity: 1; transform: translateY(0); display: inline-block;}
 .sec2 .photo img.show                          {opacity: 1; transform: translateY(0px);}
@@ -224,13 +221,112 @@ body.active .sec1 .text .skew            {opacity: 1; transform: translateY(0%);
 .sec2 .skill-wrap.show .skill li:nth-child(2)  {opacity: 1; transform: translateY(0px);}
 .sec2 .skill-wrap.show .skill li:nth-child(3)  {opacity: 1; transform: translateY(0px);}
 .sec2 .skill-wrap.show .skill li:nth-child(4)  {opacity: 1; transform: translateY(0px);}
-.sec2 .skill-wrap.show .skill li:nth-child(5)  {opacity: 1; transform: translateY(0px);}
+.sec2 .skill-wrap.show .skill li:nth-child(5)  {opacity: 1; transform: translateY(0px);} */
+/* ABOUT SECTION FIXED + FINAL ANIMATION */
 
+.sec2 { 
+    padding: 10% 0 12% 0;
+    text-align: center;
+    position: relative;
+}
 
+.sec2 .strapline {
+    color: #3EE7AC;
+    font-size: 18px;
+    letter-spacing: 0.25em;
+    margin-bottom: 16px;
+
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all .7s ease;
+}
+
+/* 네가 실제 HTML에 사용하는 h3에 적용 */
+.sec2 h3 {
+    font-family: 'Fugaz One', cursive;
+    font-size: 70px;
+    margin-bottom: 60px;
+}
+
+.sec2 h3 span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all .4s cubic-bezier(.215,.61,.355,1);
+}
+
+/* 중앙 정보 */
+.about-center {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all .9s ease;
+}
+
+.about-photo img {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    padding: 8px;
+    background: rgba(255,255,255,0.45);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 25px rgba(62,231,172,0.35);
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all .9s .1s ease;
+}
+
+.about-name {
+    font-family: 'Fugaz One', cursive;
+    font-size: 46px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all .7s .25s ease;
+}
+
+.about-role {
+    font-size: 20px;
+    color: #555;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all .7s .35s ease;
+}
+
+.about-line {
+    width: 120px;
+    height: 3px;
+    background: #3EE7AC;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all .7s .45s ease;
+}
+
+/* show가 붙었을 때 */
+.sec2.show .strapline {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sec2.show h3 span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sec2.show .about-center {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sec2.show .about-photo img,
+.sec2.show .about-name,
+.sec2.show .about-role,
+.sec2.show .about-line {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* sec3 */
 
-.sec3 {padding: 6% 0 15% 0; text-align: center;}
+/* .sec3 {padding: 6% 0 15% 0; text-align: center;}
 .sec3 .strapline {color: #3ee7ac; font-size: 24px; font-weight: 700; letter-spacing: 0.5px;}
 .sec3 h3 {color: #fff; font-size: 80px; font-family: 'Fugaz One', cursive; font-weight: bold; margin-top: -14px; padding-bottom: 160px;}
 .sec3 img {display: block; width: 100%; height: auto;}
@@ -272,7 +368,7 @@ body.active .sec1 .text .skew            {opacity: 1; transform: translateY(0%);
 
 
 /********** sec3 animation **********/
-.sec3 .strapline                     {opacity: 0; transform: translateY(40px);transition:all 0.5s ease;}
+/* .sec3 .strapline                     {opacity: 0; transform: translateY(40px);transition:all 0.5s ease;}
 .sec3 h3 span                        {opacity: 0; transform: translateY(-10px); display: inline-block;}
 .sec3 h3 span:nth-child(1)           {transition: all 0.3s 0.5s cubic-bezier(.215,.61,.355,1);}
 .sec3 h3 span:nth-child(2)           {transition: all 0.3s 0.55s cubic-bezier(.215,.61,.355,1);}
@@ -314,7 +410,7 @@ body.active .sec1 .text .skew            {opacity: 1; transform: translateY(0%);
 .sec3 .cont_right .s3_text.show .h4_tit    {opacity: 1; transform: translateY(0px);}
 .sec3 .cont_right .s3_text.show .s3_desc   {opacity: 1; transform: translateY(0px);}
 .sec3 .cont_right .s3_text.show .mSite     {opacity: 1; transform: translateY(0px);}
-.sec3 .cont_right .s3_text.show .skew      {opacity: 1; transform: translateY(0px);}
+.sec3 .cont_right .s3_text.show .skew      {opacity: 1; transform: translateY(0px);} */ */
 
 
 
@@ -753,5 +849,117 @@ body.active .sec1 .text .skew            {opacity: 1; transform: translateY(0%);
 
 
 @media (max-width: 320px){
+}
+
+
+
+/* ======================================
+   NEW SECTION 3 – 2025 PORTFOLIO STYLE
+====================================== */
+
+.sec3 {
+    padding: 12% 0;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.sec3 .strapline {
+    color: #3EE7AC;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.sec3-title {
+    text-align: center;
+    font-family: 'Fugaz One';
+    font-size: 64px;
+    color: #fff;
+    margin-bottom: 100px;
+}
+
+/* 프로젝트 블럭 */
+.project {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 80px;
+    margin-bottom: 180px;
+}
+
+/* 좌우 반전 */
+.project.reverse {
+    flex-direction: row-reverse;
+}
+
+/* 이미지 영역 */
+.project-img {
+    flex: 1;
+}
+
+.project-img img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    opacity: 0;
+    transform: translateY(60px) scale(0.95);
+}
+
+/* 텍스트 영역 */
+.project-text {
+    flex: 1;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.p-num {
+    color: #3EE7AC;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+}
+
+.p-title {
+    font-size: 44px;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.p-desc {
+    color: #cfcfcf;
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.7;
+}
+
+.p-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 14px 32px;
+    border-radius: 999px;
+    border: 1px solid #3EE7AC;
+    color: #3EE7AC;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    transition: all .25s ease;
+}
+
+.p-link:hover {
+    background: #3EE7AC;
+    color: #050505;
+    transform: translateY(-2px);
+}
+
+/* 모바일 대응 */
+@media (max-width: 960px) {
+    .project {
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 120px;
+    }
 }
 
