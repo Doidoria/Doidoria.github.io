@@ -50,7 +50,6 @@ $("html, body").animate({ scrollTop: target.offset().top },600,"easeInOutExpo");
 });
 
 
-//counter
 function counter() {
     if ($('.about .count').size()) {
         $c = $('.about .count');
