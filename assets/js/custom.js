@@ -1,5 +1,4 @@
 $(function(){
-    imagesProgress(); //이미지 로딩 소스
     counter();            
 });
 
@@ -312,55 +311,24 @@ for (let i = 0; i < totalStars; i++) {
 
 // INTRO ANIMATION (jQuery)
 $(function(){
-    $(".intro-bg").animate({
-        height: "100%"
-    }, 1000, "easeOutQuad", function(){
+    // 인트로 버튼 클릭 (PC 클릭 + 모바일 터치 완벽 대응)
+    $(".intro-btn").on("click touchstart", function(e){
+        e.preventDefault(); 
+        
+        // 중복 클릭 방지 (이미 사라지는 중이면 무시)
+        if($(this).hasClass("clicked")) return;
+        $(this).addClass("clicked");
 
-        $(".intro-profile")
-            .delay(200)
-            .animate({ 
-                opacity: 1 
-            }, 100);
-
-        $(".intro-profile").delay(200).animate({
-            transformScale: 1
-        }, {
-            duration: 800,
-            step: function(now){
-                $(this).css("transform", "translate(-50%, -50%) scale("+now+")");
-            },
-            easing: "easeOutElastic"
+        $("#intro").fadeOut(600, function() {
+            $("body").addClass("active");
+            $(this).remove(); // DOM에서 완전히 제거하여 메모리 확보
         });
-
-        // 3. 버튼 등장
-        $(".intro-btn").delay(600).animate({
-            opacity: 1
-        }, 100);
-
-        $(".intro-btn").delay(600).animate({
-            transformScale: 1
-        }, {
-            duration: 200,
-            step: function(now){
-                $(this).css("transform", "translate(-50%, -50%) scale("+now+")");
-            },
-            easing: "easeOutBack"
-        });
-
     });
-
-    // 버튼 클릭 시 인트로 제거 → 메인 진입
-    $(".intro-btn").click(function(){
-        $("#intro").fadeOut(600);
-        $("body").addClass("active");
-    });
-
 });
 
 /* ======================================
    GSAP – Section 3 Animation
 ====================================== */
-
 gsap.registerPlugin(ScrollTrigger);
 
 $(".project").each(function () {

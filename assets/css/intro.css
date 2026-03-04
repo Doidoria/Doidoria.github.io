@@ -1,19 +1,8 @@
-#intro {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    overflow: hidden;
-    z-index: 99999;
-    background: #000;
-}
-
-#intro .intro-bg {
-    position: absolute; bottom: 0;
-    width: 100%; height: 0%;
-    background: linear-gradient(to bottom, #0C1415, #17272A, #273538);
-    animation: introBg 1s cubic-bezier(.25,.8,.25,1) forwards;
-    filter: blur(0px);
-}
+/* =======================================
+   intro.css (전체 교체용 수정본)
+======================================= */
+#intro { position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 99999; background: #000; }
+#intro .intro-bg { position: absolute; bottom: 0; width: 100%; height: 0%; background: linear-gradient(to bottom, #0C1415, #17272A, #273538); animation: introBg 1s cubic-bezier(.25,.8,.25,1) forwards; filter: blur(0px); }
 
 @keyframes introBg {
     0%   { height: 0%; filter: blur(14px); opacity: 0; }
@@ -21,20 +10,8 @@
     100% { height: 100%; filter: blur(0px); }
 }
 
-/* profile 등장 */
-.intro-profile {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    opacity: 0;
-    animation: introProfile 1.2s 0.5s cubic-bezier(.23,1,.32,1) forwards;
-}
-.intro-profile img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-}
+.intro-profile { position: absolute; top: 40%; left: 50%; opacity: 0; animation: introProfile 1.2s 0.5s cubic-bezier(.23,1,.32,1) forwards; }
+.intro-profile img { width: 150px; height: 150px; border-radius: 50%; box-shadow: 0 5px 20px rgba(0,0,0,0.4); }
 
 @keyframes introProfile {
     0%   { transform: translate(-50%, -50%) scale(0.7); opacity: 0; }
@@ -42,62 +19,56 @@
     100% { transform: translate(-50%, -50%) scale(1); opacity: 1;}
 }
 
-/* 버튼 */
+/* --- 버튼 래퍼 (이벤트 감지 영역을 명확히 분리) --- */
 .intro-btn {
-    position: absolute;
-    top: 56%;
-    left: 50%;
-    opacity: 0;
-    background: #0F0F0F;
-    border: none;
-    color: #fff;
-    padding: 10px;
-    border-radius: 15px;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: all .4s ease;
-    animation: introBtn 1.2s 0.5s cubic-bezier(.23,1,.32,1) forwards;
+    position: absolute; top: 56%; left: 50%; transform: translate(-50%, -50%); /* 애니메이션 대신 고정값 사용 */
+    background: #0F0F0F; border: none; color: #fff; padding: 10px; border-radius: 15px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; opacity: 0;
+    z-index: 100000; /* 확실한 최상단 */
+    animation: introBtnFade 1.2s 0.5s cubic-bezier(.23,1,.32,1) forwards;
+    
+    /* 터치 및 클릭 안정성 강화 */
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
 }
 
-@keyframes introBtn {
-    0%   { transform: translate(-50%, -40%) scale(0.75); opacity: 0; }
-    100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+@keyframes introBtnFade {
+    0%   { opacity: 0; margin-top: 20px; }
+    100% { opacity: 1; margin-top: 0; }
 }
 
+/* 텍스트 영역: clip-path 제거, max-width로 컨트롤 */
 .intro-text {
-    max-width: 0;
-    opacity: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    transition: all .4s ease;
-    font-size: 20px;
-    font-weight: bold;
-    clip-path: inset(0 100% 0 0);
-    transition: clip-path .45s ease;
-}
-.intro-arrow-box{
-    width: 35px;
-    height: 35px;
-    padding: 5px;
-    border-radius: 10px;
-    background-color: #1e8888;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.intro-arrow {
-    width: 20px;
+    width: auto; max-width: 0; /* 평소엔 숨김 */
+    opacity: 0; overflow: hidden; white-space: nowrap;
+    font-size: 20px; font-weight: bold;
+    transition: all .4s cubic-bezier(0.25, 0.8, 0.25, 1); /* 부드러운 전환 */
 }
 
-/* hover 시 버튼 확장 */
-.intro-btn:hover {
-    gap: 20px;
-    padding: 15px 20px 15px 30px;
+.intro-arrow-box {
+    width: 35px; height: 35px; padding: 5px; border-radius: 10px; background-color: #1e8888;
+    display: flex; justify-content: center; align-items: center; flex-shrink: 0; /* 화살표 찌그러짐 방지 */
 }
-.intro-btn:hover .intro-text {
-    max-width: 200px;
-    opacity: 1;
-    clip-path: inset(0 0 0 0);
+.intro-arrow { width: 20px; }
+
+/* PC 환경: Hover 효과 */
+@media (hover: hover) and (pointer: fine) {
+    .intro-btn:hover { padding: 10px 20px 10px 25px; }
+    .intro-btn:hover .intro-text { max-width: 150px; opacity: 1; margin-right: 15px; }
+}
+
+/* 모바일 환경: 항상 텍스트 노출 및 클릭 영역 확보 */
+@media (max-width: 768px) {
+    .intro-profile { top: 38%; }
+    .intro-btn {
+        padding: 12px 15px 12px 20px; 
+        min-width: 160px; /* 모바일 터치 최소 영역 확보 */
+    }
+    .intro-text {
+        max-width: 150px; /* 강제 노출 */
+        opacity: 1; 
+        font-size: 18px; 
+        margin-right: 15px; 
+    }
 }
